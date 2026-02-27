@@ -27,10 +27,14 @@ We welcome feature suggestions! Please open an issue with:
    git checkout -b feature/your-feature-name
    ```
 3. **Make** your changes
-4. **Test** your changes locally by running `npm start`
-5. **Commit** with a clear message
+4. **Test** your changes locally:
    ```bash
-   git commit -m "Add: brief description of changes"
+   npm run dev
+   ```
+   Then verify at `http://localhost:3000`.
+5. **Commit** with a clear message following [Conventional Commits](https://www.conventionalcommits.org/):
+   ```bash
+   git commit -m "feat: brief description of changes"
    ```
 6. **Push** to your fork
    ```bash
@@ -38,23 +42,68 @@ We welcome feature suggestions! Please open an issue with:
    ```
 7. **Open** a Pull Request
 
-### Code Style
+## Project Setup
+
+```bash
+git clone https://github.com/WarmAuthor/7CEPL.git
+cd 7CEPL
+npm install
+```
+
+Create a `.env` file in the project root:
+
+```env
+PORT=3000
+NODE_ENV=development
+RATE_LIMIT_WINDOW_MS=900000
+RATE_LIMIT_MAX=100
+ADMIN_API_KEY=dev-test-key
+```
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+The server will start at `http://localhost:3000`.
+
+## Code Style
 
 - Use consistent indentation (4 spaces)
 - Write semantic HTML5
 - Keep CSS organized and well-commented
 - Use descriptive variable and function names in JavaScript
+- Follow the existing modular structure for backend code:
+  - **Routes** go in `routes/`
+  - **Middleware** goes in `middleware/`
+  - **Utilities** go in `utils/`
+  - **Data files** go in `data/`
 
-### Project Setup
+## Testing API Endpoints
+
+After making backend changes, test all endpoints:
 
 ```bash
-git clone https://github.com/your-username/7CEPL.git
-cd 7CEPL
-npm install
-npm start
-```
+# Track a shipment
+curl http://localhost:3000/api/track/7CEPL12345
 
-The server will start at `http://localhost:3000`.
+# Submit contact form
+curl -X POST http://localhost:3000/api/contact \
+  -H "Content-Type: application/json" \
+  -d '{"firstName":"Test","lastName":"User","email":"test@test.com","message":"Test message"}'
+
+# Submit quote request
+curl -X POST http://localhost:3000/api/quote \
+  -H "Content-Type: application/json" \
+  -d '{"name":"Test","email":"t@t.com","origin":"Mumbai","destination":"London","cargoType":"General","serviceType":"Air Freight"}'
+
+# Admin operations (requires API key)
+curl -X PUT http://localhost:3000/api/admin/shipments/7CEPL12345 \
+  -H "x-api-key: dev-test-key" \
+  -H "Content-Type: application/json" \
+  -d '{"status":"In Transit","location":"Airport"}'
+```
 
 ---
 
