@@ -1,0 +1,24 @@
+[
+    {
+        "id": "775cfe85-bbd6-4b3d-9dc3-de76c6473dbe",
+        "firstName": "John",
+        "lastName": "Doe",
+        "email": "john@test.com",
+        "phone": "",
+        "service": "",
+        "message": "Test message",
+        "submittedAt": "2026-02-27T17:15:57.297Z",
+        "read": false
+    },
+    {
+        "id": "1a49ab36-6e3a-43b3-bdd3-0d98ded82631",
+        "firstName": "Test",
+        "lastName": "User",
+        "email": "test@example.com",
+        "phone": "+91 9876543210",
+        "service": "Air Freight",
+        "message": "Testing the contact form backend integration",
+        "submittedAt": "2026-02-27T17:18:15.376Z",
+        "read": false
+    }
+]

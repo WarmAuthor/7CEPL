@@ -1,0 +1,17 @@
+[
+    {
+        "id": "2fcb0c98-e55f-47c2-9469-8d56a811d0bd",
+        "quoteRef": "QR-MM55LKW0",
+        "name": "Test User",
+        "email": "t@t.com",
+        "phone": "",
+        "origin": "Mumbai",
+        "destination": "London",
+        "cargoType": "General",
+        "weight": 500,
+        "serviceType": "Air Freight",
+        "notes": "",
+        "status": "Pending",
+        "submittedAt": "2026-02-27T17:15:57.312Z"
+    }
+]

@@ -45,6 +45,9 @@
                 <p class="sub">Fill out the form and a logistics specialist will contact you shortly.</p>
 
                 <div id="contactFormWrapper">
+                    <div id="formErrors"
+                        style="display:none; background:rgba(255,60,60,0.1); border:1px solid rgba(255,60,60,0.3); border-radius:10px; padding:14px 18px; margin-bottom:20px; color:#ff6b6b; font-size:13px; line-height:1.8;">
+                    </div>
                     <form id="contactForm" novalidate>
                         <div class="form-row">
                             <div class="form-group">
@@ -203,12 +206,15 @@
 
             const btn = document.getElementById('submitBtn');
             const text = document.getElementById('submitText');
+            const errorContainer = document.getElementById('formErrors');
             btn.style.opacity = '0.7';
             btn.disabled = true;
             text.textContent = 'Sending…';
+            if (errorContainer) errorContainer.style.display = 'none';
 
             const body = {
-                name: document.getElementById('firstName').value + ' ' + document.getElementById('lastName').value,
+                firstName: document.getElementById('firstName').value,
+                lastName: document.getElementById('lastName').value,
                 email: document.getElementById('email').value,
                 phone: document.getElementById('phone').value,
                 service: document.getElementById('service').value,
@@ -216,16 +222,34 @@
             };
 
             try {
-                await fetch('/api/contact', {
+                const res = await fetch('/api/contact', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(body),
                 });
-            } catch (_) { }
 
-            // Always show success UI
-            document.getElementById('contactFormWrapper').style.display = 'none';
-            document.getElementById('formSuccess').classList.add('show');
+                const data = await res.json();
+
+                if (!res.ok && data.errors) {
+                    // Show validation errors
+                    if (errorContainer) {
+                        errorContainer.innerHTML = data.errors.map(err => `<div>⚠️ ${err}</div>`).join('');
+                        errorContainer.style.display = 'block';
+                    }
+                    btn.style.opacity = '1';
+                    btn.disabled = false;
+                    text.textContent = 'Send Message';
+                    return;
+                }
+
+                // Success
+                document.getElementById('contactFormWrapper').style.display = 'none';
+                document.getElementById('formSuccess').classList.add('show');
+            } catch (_) {
+                // Show success anyway for UX
+                document.getElementById('contactFormWrapper').style.display = 'none';
+                document.getElementById('formSuccess').classList.add('show');
+            }
         });
     </script>
 </body>

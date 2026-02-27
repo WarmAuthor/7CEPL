@@ -117,30 +117,37 @@
                             </div>
                         </div>
                     </div>
+
+                    <div id="timelineContainer"
+                        style="display:none; margin-top:24px; padding-top:20px; border-top:1px solid rgba(255,255,255,0.08);">
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <!-- INFO CARDS BELOW -->
-        <div
-            style="max-width:720px; margin: 40px auto 0; display:grid; grid-template-columns: repeat(3,1fr); gap:20px;">
-            <div class="why-card fade-in-up stagger-1" id="track-info-1" style="padding:24px 20px; text-align:center;">
-                <div class="why-icon" style="margin:0 auto 16px;">📡</div>
-                <h3 style="font-size:15px;">Real-Time Updates</h3>
-                <p style="font-size:13px;">Live status at every checkpoint.</p>
+            <!-- INFO CARDS BELOW -->
+            <div
+                style="max-width:720px; margin: 40px auto 0; display:grid; grid-template-columns: repeat(3,1fr); gap:20px;">
+                <div class="why-card fade-in-up stagger-1" id="track-info-1"
+                    style="padding:24px 20px; text-align:center;">
+                    <div class="why-icon" style="margin:0 auto 16px;">📡</div>
+                    <h3 style="font-size:15px;">Real-Time Updates</h3>
+                    <p style="font-size:13px;">Live status at every checkpoint.</p>
+                </div>
+                <div class="why-card fade-in-up stagger-2" id="track-info-2"
+                    style="padding:24px 20px; text-align:center;">
+                    <div class="why-icon" style="margin:0 auto 16px;">🔒</div>
+                    <h3 style="font-size:15px;">Secure Tracking</h3>
+                    <p style="font-size:13px;">Your shipment data is always private.</p>
+                </div>
+                <div class="why-card fade-in-up stagger-3" id="track-info-3"
+                    style="padding:24px 20px; text-align:center;">
+                    <div class="why-icon" style="margin:0 auto 16px;">🤝</div>
+                    <h3 style="font-size:15px;">Need Help?</h3>
+                    <p style="font-size:13px;"><a href="contact.html"
+                            style="color:var(--orange);font-weight:600;">Contact
+                            our team</a> anytime.</p>
+                </div>
             </div>
-            <div class="why-card fade-in-up stagger-2" id="track-info-2" style="padding:24px 20px; text-align:center;">
-                <div class="why-icon" style="margin:0 auto 16px;">🔒</div>
-                <h3 style="font-size:15px;">Secure Tracking</h3>
-                <p style="font-size:13px;">Your shipment data is always private.</p>
-            </div>
-            <div class="why-card fade-in-up stagger-3" id="track-info-3" style="padding:24px 20px; text-align:center;">
-                <div class="why-icon" style="margin:0 auto 16px;">🤝</div>
-                <h3 style="font-size:15px;">Need Help?</h3>
-                <p style="font-size:13px;"><a href="contact.html" style="color:var(--orange);font-weight:600;">Contact
-                        our team</a> anytime.</p>
-            </div>
-        </div>
     </section>
 
     <!-- FOOTER -->
@@ -205,6 +212,30 @@
             });
         }
 
+        function renderTimeline(timeline) {
+            const container = document.getElementById('timelineContainer');
+            if (!container || !timeline || timeline.length === 0) return;
+
+            container.innerHTML = '<h4 style="margin-bottom:16px;">Shipment Timeline</h4>' +
+                timeline.map((entry, i) => {
+                    const date = new Date(entry.timestamp);
+                    const dateStr = date.toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
+                    const timeStr = date.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' });
+                    const isLatest = i === timeline.length - 1;
+                    return `
+                        <div style="display:flex; gap:14px; padding:12px 0; border-left:2px solid ${isLatest ? 'var(--orange)' : 'rgba(255,255,255,0.1)'}; margin-left:8px; padding-left:20px; position:relative;">
+                            <div style="position:absolute; left:-6px; top:16px; width:10px; height:10px; border-radius:50%; background:${isLatest ? 'var(--orange)' : 'var(--gray-400)'}; border:2px solid var(--dark-bg);"></div>
+                            <div style="flex:1;">
+                                <div style="font-weight:600; color:${isLatest ? 'var(--orange)' : 'var(--white)'}; font-size:14px;">${entry.status}</div>
+                                <div style="font-size:13px; color:var(--gray-300); margin-top:3px;">📍 ${entry.location}</div>
+                                <div style="font-size:13px; color:var(--gray-400); margin-top:3px;">${entry.description}</div>
+                                <div style="font-size:11px; color:var(--gray-500); margin-top:6px;">${dateStr} at ${timeStr}</div>
+                            </div>
+                        </div>`;
+                }).join('');
+            container.style.display = 'block';
+        }
+
         async function trackShipment() {
             const id = document.getElementById('trackingId').value.trim();
             const resultDiv = document.getElementById('result');
@@ -222,13 +253,14 @@
 
             try {
                 const response = await fetch(`/api/track/${encodeURIComponent(id)}`);
-                const data = await response.json();
+                const json = await response.json();
 
                 btn.classList.remove('loading');
                 btnText.textContent = 'Track';
 
-                if (response.ok) {
-                    document.getElementById('r-id').textContent = id;
+                if (response.ok && json.success) {
+                    const data = json.shipment;
+                    document.getElementById('r-id').textContent = data.id || id;
                     document.getElementById('r-origin').textContent = data.origin || '—';
                     document.getElementById('r-dest').textContent = data.destination || '—';
                     document.getElementById('r-status').textContent = data.status || '—';
@@ -241,6 +273,12 @@
                     else badge.classList.add('transit');
 
                     setSteps(data.status);
+
+                    // Render timeline
+                    if (data.timeline && data.timeline.length > 0) {
+                        renderTimeline(data.timeline);
+                    }
+
                     resultDiv.classList.add('show');
                     resultDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
                 } else {

@@ -1,16 +1,195 @@
 [
     {
         "id": "7CEPL12345",
-        "status": "In Transit",
+        "status": "At Customs",
         "origin": "Ahmedabad, India",
         "destination": "London, UK",
-        "estimatedDelivery": "2026-03-05"
+        "estimatedDelivery": "2026-03-05",
+        "serviceType": "Air Freight",
+        "cargoType": "Electronics",
+        "weight": 850,
+        "currentLocation": "London Heathrow",
+        "customerName": "Rajesh Mehta",
+        "customerEmail": "rajesh@mehtaexports.com",
+        "createdAt": "2026-02-20T09:00:00.000Z",
+        "updatedAt": "2026-02-27T17:15:57.326Z",
+        "timeline": [
+            {
+                "status": "Picked Up",
+                "location": "Ahmedabad, India",
+                "timestamp": "2026-02-20T09:00:00.000Z",
+                "description": "Shipment picked up from warehouse in Ahmedabad."
+            },
+            {
+                "status": "In Transit",
+                "location": "Sardar Vallabhbhai Patel International Airport, Ahmedabad",
+                "timestamp": "2026-02-21T06:30:00.000Z",
+                "description": "Cargo cleared for air export, loaded onto flight AI-342."
+            },
+            {
+                "status": "In Transit",
+                "location": "Dubai International Airport, UAE",
+                "timestamp": "2026-02-22T11:15:00.000Z",
+                "description": "Transit hub — awaiting connecting flight to London Heathrow."
+            },
+            {
+                "status": "At Customs",
+                "location": "London Heathrow",
+                "timestamp": "2026-02-27T17:15:57.326Z",
+                "description": "Customs inspection in progress"
+            }
+        ]
     },
     {
         "id": "7CEPL67890",
         "status": "Delivered",
         "origin": "Mumbai, India",
         "destination": "New York, USA",
-        "estimatedDelivery": "2026-02-20"
+        "estimatedDelivery": "2026-02-20",
+        "serviceType": "Ocean Freight",
+        "cargoType": "Textiles",
+        "weight": 12000,
+        "currentLocation": "New York, USA",
+        "customerName": "Sarah Thompson",
+        "customerEmail": "sarah@skybridge.co.uk",
+        "createdAt": "2026-01-15T08:00:00.000Z",
+        "updatedAt": "2026-02-20T16:00:00.000Z",
+        "timeline": [
+            {
+                "status": "Picked Up",
+                "location": "Mumbai, India",
+                "timestamp": "2026-01-15T08:00:00.000Z",
+                "description": "Shipment picked up from Mumbai textile district."
+            },
+            {
+                "status": "In Transit",
+                "location": "Jawaharlal Nehru Port, Mumbai",
+                "timestamp": "2026-01-17T10:00:00.000Z",
+                "description": "Loaded onto vessel MSC Aria, container MSCU-7291045."
+            },
+            {
+                "status": "At Customs",
+                "location": "Port of New York and New Jersey, USA",
+                "timestamp": "2026-02-14T08:30:00.000Z",
+                "description": "Vessel arrived at port. Customs clearance in progress."
+            },
+            {
+                "status": "Out for Delivery",
+                "location": "New York, USA",
+                "timestamp": "2026-02-19T09:00:00.000Z",
+                "description": "Customs cleared. Last-mile delivery scheduled."
+            },
+            {
+                "status": "Delivered",
+                "location": "New York, USA",
+                "timestamp": "2026-02-20T16:00:00.000Z",
+                "description": "Package delivered. Signed by: J. Williams."
+            }
+        ]
+    },
+    {
+        "id": "7CEPL24680",
+        "status": "At Customs",
+        "origin": "Chennai, India",
+        "destination": "Sydney, Australia",
+        "estimatedDelivery": "2026-03-10",
+        "serviceType": "Ocean Freight",
+        "cargoType": "Auto Parts",
+        "weight": 8500,
+        "currentLocation": "Port of Sydney, Australia",
+        "customerName": "Priya Nair",
+        "customerEmail": "priya@novatech.in",
+        "createdAt": "2026-02-01T07:00:00.000Z",
+        "updatedAt": "2026-02-25T12:00:00.000Z",
+        "timeline": [
+            {
+                "status": "Picked Up",
+                "location": "Chennai, India",
+                "timestamp": "2026-02-01T07:00:00.000Z",
+                "description": "Shipment collected from Chennai manufacturing facility."
+            },
+            {
+                "status": "In Transit",
+                "location": "Chennai Port, India",
+                "timestamp": "2026-02-03T14:00:00.000Z",
+                "description": "Loaded onto vessel Ever Given, container EVRU-3381920."
+            },
+            {
+                "status": "In Transit",
+                "location": "Colombo, Sri Lanka",
+                "timestamp": "2026-02-08T06:00:00.000Z",
+                "description": "Transshipment point — container transferred to feeder vessel."
+            },
+            {
+                "status": "At Customs",
+                "location": "Port of Sydney, Australia",
+                "timestamp": "2026-02-25T12:00:00.000Z",
+                "description": "Arrived at Port of Sydney. Australian customs inspection in progress."
+            }
+        ]
+    },
+    {
+        "id": "7CEPL13579",
+        "status": "Picked Up",
+        "origin": "Delhi, India",
+        "destination": "Frankfurt, Germany",
+        "estimatedDelivery": "2026-03-15",
+        "serviceType": "Air Freight",
+        "cargoType": "Pharmaceuticals",
+        "weight": 320,
+        "currentLocation": "Delhi, India",
+        "customerName": "Amit Sharma",
+        "customerEmail": "amit@pharmaworld.in",
+        "createdAt": "2026-02-27T10:00:00.000Z",
+        "updatedAt": "2026-02-27T10:00:00.000Z",
+        "timeline": [
+            {
+                "status": "Picked Up",
+                "location": "Delhi, India",
+                "timestamp": "2026-02-27T10:00:00.000Z",
+                "description": "Temperature-controlled shipment picked up from Delhi cold storage facility."
+            }
+        ]
+    },
+    {
+        "id": "7CEPL97531",
+        "status": "Out for Delivery",
+        "origin": "Bengaluru, India",
+        "destination": "Singapore",
+        "estimatedDelivery": "2026-02-28",
+        "serviceType": "Express Delivery",
+        "cargoType": "IT Equipment",
+        "weight": 150,
+        "currentLocation": "Singapore",
+        "customerName": "Karthik Rajan",
+        "customerEmail": "karthik@techsolutions.sg",
+        "createdAt": "2026-02-24T08:00:00.000Z",
+        "updatedAt": "2026-02-27T08:00:00.000Z",
+        "timeline": [
+            {
+                "status": "Picked Up",
+                "location": "Bengaluru, India",
+                "timestamp": "2026-02-24T08:00:00.000Z",
+                "description": "Express pickup from Bengaluru tech park."
+            },
+            {
+                "status": "In Transit",
+                "location": "Kempegowda International Airport, Bengaluru",
+                "timestamp": "2026-02-24T16:00:00.000Z",
+                "description": "Cleared for export. Loaded onto flight SQ-502."
+            },
+            {
+                "status": "At Customs",
+                "location": "Changi Airport, Singapore",
+                "timestamp": "2026-02-25T22:00:00.000Z",
+                "description": "Arrived Singapore. Express customs clearance lane."
+            },
+            {
+                "status": "Out for Delivery",
+                "location": "Singapore",
+                "timestamp": "2026-02-27T08:00:00.000Z",
+                "description": "Out for delivery — expected by end of day."
+            }
+        ]
     }
 ]
