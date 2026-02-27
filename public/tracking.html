@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Track your 7CEPL shipment in real-time. Enter your tracking ID for live status updates.">
+    <title>Track Shipment — 7CEPL</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar" id="navbar">
+        <a href="index.html" class="nav-logo">
+            <img src="images/logo.png" alt="7CEPL Logo" class="logo-img">
+        </a>
+        <div class="nav-links" id="navLinks">
+            <a href="index.html">Home</a>
+            <a href="services.html">Services</a>
+            <a href="tracking.html" class="active">Tracking</a>
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact</a>
+            <a href="tracking.html" class="nav-cta">Track Shipment</a>
+        </div>
+        <div class="nav-toggle" id="navToggle"><span></span><span></span><span></span></div>
+    </nav>
+
+    <!-- PAGE HERO -->
+    <div class="page-hero">
+        <span class="section-label">Live Tracking</span>
+        <h1>Track Your Shipment</h1>
+        <p>Enter your tracking ID below for real-time status, location, and estimated delivery information.</p>
+    </div>
+
+    <!-- TRACKING SECTION -->
+    <section class="tracking-section">
+        <div class="tracking-box fade-in-up" id="tracking-box">
+            <h2>Shipment Tracker</h2>
+            <p class="sub">Use the tracking number from your shipment confirmation email.</p>
+
+            <div class="track-form">
+                <input type="text" id="trackingId" class="track-input" placeholder="e.g. 7C-2024-001" autocomplete="off"
+                    aria-label="Tracking ID">
+                <button class="track-btn" id="trackBtn" onclick="trackShipment()">
+                    <span id="trackBtnText">Track</span>
+                </button>
+            </div>
+
+            <div class="track-error" id="trackError">
+                ❌ Tracking ID not found. Please check the ID and try again.
+            </div>
+
+            <div class="track-result" id="result">
+                <div class="result-card" id="resultCard">
+                    <div class="result-header">
+                        <div>
+                            <div
+                                style="font-size:12px; color:rgba(255,255,255,.6); margin-bottom:4px; letter-spacing:.06em; text-transform:uppercase;">
+                                Tracking ID</div>
+                            <h3 id="r-id">—</h3>
+                        </div>
+                        <div class="status-badge transit" id="r-badge">—</div>
+                    </div>
+
+                    <div class="result-route">
+                        <div>
+                            <div
+                                style="font-size:11px;color:var(--gray-600);letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px;font-weight:600;">
+                                Origin</div>
+                            <div class="city" id="r-origin">—</div>
+                        </div>
+                        <div class="arrow">✈ ──────→</div>
+                        <div style="text-align:right">
+                            <div
+                                style="font-size:11px;color:var(--gray-600);letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px;font-weight:600;">
+                                Destination</div>
+                            <div class="city" id="r-dest">—</div>
+                        </div>
+                    </div>
+
+                    <div class="result-info">
+                        <div class="info-item">
+                            <label>Status</label>
+                            <span id="r-status">—</span>
+                        </div>
+                        <div class="info-item">
+                            <label>Estimated Delivery</label>
+                            <span id="r-eta">—</span>
+                        </div>
+                    </div>
+
+                    <div class="stepper">
+                        <h4>Shipment Progress</h4>
+                        <div class="steps" id="stepperSteps">
+                            <div class="step done" id="step-pickup">
+                                <div class="step-dot">📦</div>
+                                <div class="step-label">Picked Up</div>
+                            </div>
+                            <div class="step done" id="step-transit">
+                                <div class="step-dot">🚚</div>
+                                <div class="step-label">In Transit</div>
+                            </div>
+                            <div class="step" id="step-customs">
+                                <div class="step-dot">📋</div>
+                                <div class="step-label">Customs</div>
+                            </div>
+                            <div class="step" id="step-outfordelivery">
+                                <div class="step-dot">🛵</div>
+                                <div class="step-label">Out for Delivery</div>
+                            </div>
+                            <div class="step" id="step-delivered">
+                                <div class="step-dot">✅</div>
+                                <div class="step-label">Delivered</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- INFO CARDS BELOW -->
+        <div
+            style="max-width:720px; margin: 40px auto 0; display:grid; grid-template-columns: repeat(3,1fr); gap:20px;">
+            <div class="why-card fade-in-up stagger-1" id="track-info-1" style="padding:24px 20px; text-align:center;">
+                <div class="why-icon" style="margin:0 auto 16px;">📡</div>
+                <h3 style="font-size:15px;">Real-Time Updates</h3>
+                <p style="font-size:13px;">Live status at every checkpoint.</p>
+            </div>
+            <div class="why-card fade-in-up stagger-2" id="track-info-2" style="padding:24px 20px; text-align:center;">
+                <div class="why-icon" style="margin:0 auto 16px;">🔒</div>
+                <h3 style="font-size:15px;">Secure Tracking</h3>
+                <p style="font-size:13px;">Your shipment data is always private.</p>
+            </div>
+            <div class="why-card fade-in-up stagger-3" id="track-info-3" style="padding:24px 20px; text-align:center;">
+                <div class="why-icon" style="margin:0 auto 16px;">🤝</div>
+                <h3 style="font-size:15px;">Need Help?</h3>
+                <p style="font-size:13px;"><a href="contact.html" style="color:var(--orange);font-weight:600;">Contact
+                        our team</a> anytime.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <div class="nav-logo">
+                        <img src="images/logo.png" alt="7CEPL Logo" class="logo-img footer-logo-img">
+                    </div>
+                    <p>Founded in 2014, 7CEPL delivers global logistics solutions from Ahmedabad, India.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <a href="services.html">Air Freight</a>
+                    <a href="services.html">Ocean Freight</a>
+                    <a href="services.html">Ground Shipping</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <a href="about.html">About Us</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <a href="mailto:info@7cepl.com">info@7cepl.com</a>
+                    <a href="tel:+919876543210">+91 98765 43210</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 7 Continents Express Pvt. Ltd. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/animations.js"></script>
+    <script>
+        const STEP_MAP = {
+            'Picked Up': ['step-pickup'],
+            'In Transit': ['step-pickup', 'step-transit'],
+            'At Customs': ['step-pickup', 'step-transit', 'step-customs'],
+            'Out for Delivery': ['step-pickup', 'step-transit', 'step-customs', 'step-outfordelivery'],
+            'Delivered': ['step-pickup', 'step-transit', 'step-customs', 'step-outfordelivery', 'step-delivered'],
+        };
+
+        function setSteps(status) {
+            const allSteps = ['step-pickup', 'step-transit', 'step-customs', 'step-outfordelivery', 'step-delivered'];
+            const doneSteps = STEP_MAP[status] || ['step-pickup'];
+
+            allSteps.forEach(id => {
+                const el = document.getElementById(id);
+                el.classList.remove('done', 'current');
+            });
+
+            doneSteps.forEach((id, i) => {
+                const el = document.getElementById(id);
+                if (i === doneSteps.length - 1 && status !== 'Delivered') {
+                    el.classList.add('current');
+                } else {
+                    el.classList.add('done');
+                }
+            });
+        }
+
+        async function trackShipment() {
+            const id = document.getElementById('trackingId').value.trim();
+            const resultDiv = document.getElementById('result');
+            const errorDiv = document.getElementById('trackError');
+            const btn = document.getElementById('trackBtn');
+            const btnText = document.getElementById('trackBtnText');
+
+            if (!id) return;
+
+            // Loading state
+            btn.classList.add('loading');
+            btnText.textContent = '';
+            resultDiv.classList.remove('show');
+            errorDiv.classList.remove('show');
+
+            try {
+                const response = await fetch(`/api/track/${encodeURIComponent(id)}`);
+                const data = await response.json();
+
+                btn.classList.remove('loading');
+                btnText.textContent = 'Track';
+
+                if (response.ok) {
+                    document.getElementById('r-id').textContent = id;
+                    document.getElementById('r-origin').textContent = data.origin || '—';
+                    document.getElementById('r-dest').textContent = data.destination || '—';
+                    document.getElementById('r-status').textContent = data.status || '—';
+                    document.getElementById('r-eta').textContent = data.estimatedDelivery || '—';
+
+                    const badge = document.getElementById('r-badge');
+                    badge.textContent = data.status || '—';
+                    badge.className = 'status-badge ';
+                    if (data.status === 'Delivered') badge.classList.add('delivered');
+                    else badge.classList.add('transit');
+
+                    setSteps(data.status);
+                    resultDiv.classList.add('show');
+                    resultDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                } else {
+                    errorDiv.classList.add('show');
+                }
+            } catch (err) {
+                btn.classList.remove('loading');
+                btnText.textContent = 'Track';
+                errorDiv.classList.add('show');
+                errorDiv.textContent = '❌ Error connecting to server. Please try again.';
+            }
+        }
+
+        document.getElementById('trackingId').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') trackShipment();
+        });
+    </script>
+</body>
+
+</html>

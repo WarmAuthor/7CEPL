@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="7 Continents Express Pvt. Ltd. — Global logistics and freight solutions across air, ocean, and ground. Track shipments, explore services, and get a quote.">
+    <title>7CEPL — Global Logistics Solutions</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar" id="navbar">
+        <a href="index.html" class="nav-logo">
+            <img src="images/logo.png" alt="7CEPL Logo" class="logo-img">
+        </a>
+        <div class="nav-links" id="navLinks">
+            <a href="index.html" class="active">Home</a>
+            <a href="services.html">Services</a>
+            <a href="tracking.html">Tracking</a>
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact</a>
+            <a href="tracking.html" class="nav-cta">Track Shipment</a>
+        </div>
+        <div class="nav-toggle" id="navToggle" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </div>
+    </nav>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+        <div class="hero-bg" id="heroBg"></div>
+        <div class="hero-overlay"></div>
+        <canvas id="hero-canvas"></canvas>
+
+        <div class="hero-content">
+            <div class="hero-badge">🌍 Delivering Across 7 Continents</div>
+
+            <h1 class="hero-title">
+                Global Logistics<br>Built on <span class="highlight">
+                    <span id="typed-text">Reliability</span><span class="hero-typed"></span>
+                </span>
+            </h1>
+
+            <p class="hero-sub">
+                From Ahmedabad to the world — 7CEPL delivers your cargo with speed, security, and complete transparency
+                at every step.
+            </p>
+
+            <div class="hero-actions">
+                <a href="tracking.html" class="btn-primary" id="hero-track-btn">
+                    📦 Track Shipment
+                </a>
+                <a href="contact.html" class="btn-outline" id="hero-quote-btn">
+                    Get a Free Quote →
+                </a>
+            </div>
+        </div>
+
+        <div class="scroll-hint">
+            <div class="mouse"></div>
+            <span>Scroll</span>
+        </div>
+    </section>
+
+    <!-- ===== STATS BAR ===== -->
+    <section class="stats-bar">
+        <div class="inner">
+            <div class="stat-item fade-in-up">
+                <div class="stat-number" data-count="50000" data-suffix="+">0</div>
+                <div class="stat-label">Shipments Delivered</div>
+            </div>
+            <div class="stat-item fade-in-up stagger-1">
+                <div class="stat-number" data-count="7" data-suffix=" Continents">0</div>
+                <div class="stat-label">Global Reach</div>
+            </div>
+            <div class="stat-item fade-in-up stagger-2">
+                <div class="stat-number" data-count="10" data-suffix="+ Years">0</div>
+                <div class="stat-label">Of Experience</div>
+            </div>
+            <div class="stat-item fade-in-up stagger-3">
+                <div class="stat-number" data-count="2000" data-suffix="+">0</div>
+                <div class="stat-label">Happy Clients</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SERVICES PREVIEW ===== -->
+    <section class="section services-section">
+        <div class="section-inner">
+            <div class="fade-in-up">
+                <span class="section-label">What We Do</span>
+                <h2 class="section-title">End-to-End Logistics Solutions</h2>
+                <p class="section-sub">From air freight to customs clearance, we handle every mile of your supply chain
+                    with expertise.</p>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card fade-in-up stagger-1" id="sc-air">
+                    <div class="service-card-img" style="background-image:url('images/air-freight.jpg')"></div>
+                    <div class="service-card-overlay"></div>
+                    <div class="service-card-content">
+                        <span class="service-card-icon">✈️</span>
+                        <h3>Air Freight</h3>
+                        <p>Express international cargo delivered to any destination in the fastest possible time.</p>
+                        <a href="services.html" class="service-card-arrow">Learn more →</a>
+                    </div>
+                </div>
+
+                <div class="service-card fade-in-up stagger-2" id="sc-ocean">
+                    <div class="service-card-img" style="background-image:url('images/ocean-freight.jpg')"></div>
+                    <div class="service-card-overlay"></div>
+                    <div class="service-card-content">
+                        <span class="service-card-icon">🚢</span>
+                        <h3>Ocean Freight</h3>
+                        <p>Cost-effective FCL & LCL solutions for large volume international shipments.</p>
+                        <a href="services.html" class="service-card-arrow">Learn more →</a>
+                    </div>
+                </div>
+
+                <div class="service-card fade-in-up stagger-3" id="sc-ground">
+                    <div class="service-card-img" style="background-image:url('images/ground-shipping.jpg')"></div>
+                    <div class="service-card-overlay"></div>
+                    <div class="service-card-content">
+                        <span class="service-card-icon">🚛</span>
+                        <h3>Ground Shipping</h3>
+                        <p>Reliable domestic transport with real-time tracking across India and beyond.</p>
+                        <a href="services.html" class="service-card-arrow">Learn more →</a>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align:center; margin-top:44px;" class="fade-in-up">
+                <a href="services.html" class="btn-primary" id="view-all-services">View All Services →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== WHY US ===== -->
+    <section class="section why-section">
+        <div class="section-inner">
+            <div class="fade-in-up">
+                <span class="section-label">Why Choose 7CEPL</span>
+                <h2 class="section-title">Your Cargo. Our Commitment.</h2>
+            </div>
+            <div class="why-grid">
+                <div class="why-card fade-in-up stagger-1" id="why-realtime">
+                    <div class="why-icon">📡</div>
+                    <h3>Real-Time Tracking</h3>
+                    <p>Monitor every shipment with live updates from pickup to final delivery. Full visibility at every
+                        checkpoint.</p>
+                </div>
+                <div class="why-card fade-in-up stagger-2" id="why-secure">
+                    <div class="why-icon">🔒</div>
+                    <h3>Fully Insured Cargo</h3>
+                    <p>Your goods are protected end-to-end. We offer comprehensive cargo insurance for complete peace of
+                        mind.</p>
+                </div>
+                <div class="why-card fade-in-up stagger-3" id="why-support">
+                    <div class="why-icon">🤝</div>
+                    <h3>24/7 Support</h3>
+                    <p>Our logistics experts are available around the clock to handle queries, exceptions, and urgent
+                        requests.</p>
+                </div>
+                <div class="why-card fade-in-up stagger-1" id="why-customs">
+                    <div class="why-icon">📋</div>
+                    <h3>Customs Expertise</h3>
+                    <p>Hassle-free import & export documentation. We navigate complex customs regulations so you don't
+                        have to.</p>
+                </div>
+                <div class="why-card fade-in-up stagger-2" id="why-network">
+                    <div class="why-icon">🌐</div>
+                    <h3>Global Network</h3>
+                    <p>Strategic partnerships across all 7 continents ensure reliable coverage and competitive rates
+                        worldwide.</p>
+                </div>
+                <div class="why-card fade-in-up stagger-3" id="why-tech">
+                    <div class="why-icon">⚡</div>
+                    <h3>Technology-Driven</h3>
+                    <p>Our digital platform automates documentation, tracking, and reporting — saving you time and
+                        reducing errors.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== TESTIMONIALS ===== -->
+    <section class="section testimonials-section">
+        <div class="section-inner">
+            <div style="text-align:center;" class="fade-in-up">
+                <span class="section-label">What Clients Say</span>
+                <h2 class="section-title light">Trusted by Businesses Worldwide</h2>
+            </div>
+
+            <div class="testimonials-carousel">
+                <div class="testimonials-track" id="testimonialTrack">
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">★★★★★</div>
+                        <p class="testimonial-quote">"7CEPL has been our logistics backbone for over 5 years. Their air
+                            freight team is exceptional — always on time, always professional. I wouldn't trust anyone
+                            else with our international shipments."</p>
+                        <div class="testimonial-author">
+                            Rajesh Mehta
+                            <span>Director, Mehta Exports Ltd., Ahmedabad</span>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">★★★★★</div>
+                        <p class="testimonial-quote">"Switching to 7CEPL for our ocean freight was the best supply chain
+                            decision we made. Their customs clearance team saved us weeks of delays and thousands in
+                            demurrage fees."</p>
+                        <div class="testimonial-author">
+                            Sarah Thompson
+                            <span>VP Operations, SkyBridge Manufacturing, UK</span>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">★★★★★</div>
+                        <p class="testimonial-quote">"The real-time tracking portal is a game changer. Our team always
+                            knows exactly where our consignments are. 7CEPL brings big-company technology with a
+                            personal service touch."</p>
+                        <div class="testimonial-author">
+                            Priya Nair
+                            <span>Logistics Manager, NovaTech Solutions, Bengaluru</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-dots">
+                    <div class="carousel-dot active" id="dot-0"></div>
+                    <div class="carousel-dot" id="dot-1"></div>
+                    <div class="carousel-dot" id="dot-2"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== REACH BANNER ===== -->
+    <section class="reach-section fade-in-up">
+        <div class="section-inner">
+            <span class="section-label" style="color:rgba(255,154,0,0.9)">Wherever You Ship</span>
+            <h2 class="section-title">We're Already There</h2>
+            <p class="section-sub">With operations on every continent and partners in 150+ countries, 7CEPL delivers
+                truly without borders.</p>
+            <a href="contact.html" class="btn-primary" id="get-quote-btn" style="margin:0 auto;">Get a Free Quote Today
+                →</a>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <div class="nav-logo">
+                        <img src="images/logo.png" alt="7CEPL Logo" class="logo-img footer-logo-img">
+                    </div>
+                    <p>Founded in 2014, 7CEPL delivers global logistics solutions from Ahmedabad, India. Trusted by
+                        2,000+ businesses worldwide.</p>
+                    <div class="social-links" style="margin-top:20px;">
+                        <a href="#" aria-label="LinkedIn">in</a>
+                        <a href="#" aria-label="Twitter">𝕏</a>
+                        <a href="#" aria-label="Facebook">f</a>
+                        <a href="#" aria-label="Instagram">📷</a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <a href="services.html">Air Freight</a>
+                    <a href="services.html">Ocean Freight</a>
+                    <a href="services.html">Ground Shipping</a>
+                    <a href="services.html">Warehousing</a>
+                    <a href="services.html">Customs Clearance</a>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <a href="about.html">About Us</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="tracking.html">Track Shipment</a>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <a href="mailto:info@7cepl.com">info@7cepl.com</a>
+                    <a href="tel:+919876543210">+91 98765 43210</a>
+                    <a href="#">Ahmedabad, Gujarat, India</a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2026 7 Continents Express Pvt. Ltd. All Rights Reserved.</p>
+                <p style="color:rgba(255,255,255,.3)">Built with ❤️ in India</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/animations.js"></script>
+</body>
+
+</html>

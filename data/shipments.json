@@ -1,0 +1,16 @@
+[
+    {
+        "id": "7CEPL12345",
+        "status": "In Transit",
+        "origin": "Ahmedabad, India",
+        "destination": "London, UK",
+        "estimatedDelivery": "2026-03-05"
+    },
+    {
+        "id": "7CEPL67890",
+        "status": "Delivered",
+        "origin": "Mumbai, India",
+        "destination": "New York, USA",
+        "estimatedDelivery": "2026-02-20"
+    }
+]
